@@ -4,4 +4,5 @@ import { MovieSimpleDetails } from '../../DTOs/movieSimpleDetails';
 export interface Props {
   movieDetails: MovieFullDetails | MovieSimpleDetails | null;
   size: number;
+  className?: string;
 }

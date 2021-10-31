@@ -1,3 +1,5 @@
+import notFoundImage from '../assets/404.png';
+
 export const NotFound = () => {
-  return <h1>Page not found</h1>;
+  return <img src={notFoundImage} alt="not-found" className="not-found-image" />;
 };

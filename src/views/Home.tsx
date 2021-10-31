@@ -1,11 +1,11 @@
 import { useState } from 'react';
+
 import { API_KEY } from '../index';
+import { SuccessfulSearchResults } from '../DTOs/successfulSearchResults';
 
 import { MovieList } from '../components/MovieList/MovieList';
 import { Paginator } from '../components/Paginator/Paginator';
 import { Search } from '../components/Search/Search';
-
-import { SuccessfulSearchResults } from '../DTOs/successfulSearchResults';
 
 export const Home = () => {
   const [searchedMovie, setSearchedMovie] = useState('');
@@ -16,27 +16,26 @@ export const Home = () => {
   };
 
   const onSearchButtonClicked = () => {
-    fetchMovies(API_KEY!, searchedMovie, 1);
+    fetchMovies(API_KEY!, searchedMovie);
   };
 
   const onPageChanged = (page: number) => {
     fetchMovies(API_KEY!, searchedMovie, page);
   };
 
-  const fetchMovies = async (api_key: string, movie: string, page: number) => {
+  const fetchMovies = async (api_key: string, movie: string, page: number = 1) => {
     try {
       const response = await fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${movie}&page=${page}`
       );
       const data = await response.json();
 
-      if (response.status === 200) {
-        setMovieList(data);
-      } else {
+      if (response.status !== 200) {
         throw new Error('Something went wrong!');
       }
+
+      setMovieList(data);
     } catch (error) {
-      // REVISAR AUN NO FUNCIONANDO
       console.error(error);
     }
   };

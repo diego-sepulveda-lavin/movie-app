@@ -1,0 +1,68 @@
+@import '../../_colors.scss';
+
+.movie-item-card {
+  background-color: $movie-card-color;
+  text-decoration: none;
+  display: flex;
+  width: 80%;
+  margin: 20px auto;
+  border: 1px solid rgb(182, 180, 180);
+  border-radius: 20px;
+  -webkit-box-shadow: 8px 6px 9px 0px rgba(0, 0, 0, 0.66);
+  box-shadow: 8px 6px 9px 0px rgba(0, 0, 0, 0.66);
+}
+
+.movie-item-card-image {
+  width: 200px;
+  height: 100%;
+  border-radius: 20px 0px 0px 20px;
+  /* border: 3px solid blue; */
+}
+
+.movie-item-card-data {
+  padding: 30px;
+}
+
+.movie-item-card-data > .title {
+  color: black;
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.movie-item-card-data > .language {
+  color: grey;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.movie-item-card-data > .overview {
+  color: black;
+  font-weight: 200;
+  font-size: 15px;
+  width: 90%;
+}
+
+@media only screen and (max-width: 800px) {
+  .movie-item-card{
+    width: 100%;
+    margin: 0px;
+    flex-direction: column;
+    margin-bottom: 25px;
+  }
+
+  .movie-item-card-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px 20px 0px 0px;
+  }
+
+  .movie-item-card-data {
+    padding: 5px 0px 0px 15px;
+  }
+
+  .movie-item-card-data > .title {
+    font-size: 25px;
+    margin-top: 2px;
+    margin-bottom: 15px;
+  }
+}
