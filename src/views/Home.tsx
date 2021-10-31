@@ -5,12 +5,11 @@ import { MovieList } from '../components/MovieList/MovieList';
 import { Paginator } from '../components/Paginator/Paginator';
 import { Search } from '../components/Search/Search';
 
-import { SuccessfulSearchResults } from '../dto/successfulSearchResults';
+import { SuccessfulSearchResults } from '../DTOs/successfulSearchResults';
 
 export const Home = () => {
   const [searchedMovie, setSearchedMovie] = useState('');
   const [movieList, setMovieList] = useState<SuccessfulSearchResults | null>(null);
-  const [error, setError] = useState<unknown>();
 
   const onSearchedMovieChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchedMovie(e.target.value);
@@ -22,7 +21,6 @@ export const Home = () => {
 
   const onPageChanged = (page: number) => {
     fetchMovies(API_KEY!, searchedMovie, page);
-    console.log(page);
   };
 
   const fetchMovies = async (api_key: string, movie: string, page: number) => {
@@ -31,8 +29,6 @@ export const Home = () => {
         `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${movie}&page=${page}`
       );
       const data = await response.json();
-      console.log(response);
-      console.log(data);
 
       if (response.status === 200) {
         setMovieList(data);
@@ -42,7 +38,6 @@ export const Home = () => {
     } catch (error) {
       // REVISAR AUN NO FUNCIONANDO
       console.error(error);
-      setError(error);
     }
   };
 

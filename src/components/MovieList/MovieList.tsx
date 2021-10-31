@@ -4,7 +4,7 @@ import { Props } from './types';
 export const MovieList = (props: Props) => {
   const { movieList } = props;
 
-  const movies = movieList?.results.map(movie => <MovieItem key={movie.id} movieDetails={movie} />);
+  const movies = movieList?.results.map(movie => <MovieItem key={movie.id} movieSimpleDetails={movie} />);
 
   return <div>{movies}</div>;
 };

@@ -1,5 +1,5 @@
-import { MovieDetails } from '../../dto/movieDetails';
+import { MovieSimpleDetails } from '../../DTOs/movieSimpleDetails';
 
 export interface Props {
-  movieDetails: MovieDetails;
+  movieSimpleDetails: MovieSimpleDetails;
 }

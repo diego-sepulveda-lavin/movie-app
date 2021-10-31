@@ -1,20 +1,26 @@
+import { Link } from 'react-router-dom';
+
 import { Props } from './types';
-import defaultImage from '../../assets/default-poster.jpg';
+import { MovieImage } from '../MovieImage/MovieImage';
 
 export const MovieItem = (props: Props) => {
-  const { original_language: originalLanguaje, poster_path: posterPath, title, overview } = props.movieDetails;
+  const {
+    original_language: originalLanguaje,
+    title,
+    overview,
+    id,
+  } = props.movieSimpleDetails;
 
-  const imageSrc = posterPath ? `https://image.tmdb.org/t/p/w200/${posterPath}` : defaultImage;
   return (
-    <div>
+    <Link to={`/details/${id}`}>
       <div>
-        <img src={imageSrc} alt={title} />
+        <MovieImage movieDetails={props.movieSimpleDetails} size={200} />
+        <div>
+          <p>Title: {title}</p>
+          <p>Language: {originalLanguaje}</p>
+          <p>Overview: {overview}</p>
+        </div>
       </div>
-      <div>
-        <p>Title: {title}</p>
-        <p>Language: {originalLanguaje}</p>
-        <p>Overview: {overview}</p>
-      </div>
-    </div>
+    </Link>
   );
 };
